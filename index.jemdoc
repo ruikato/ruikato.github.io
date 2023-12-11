@@ -1,0 +1,67 @@
+# jemdoc: menu{MENU}{index.html}, nofooter
+= Rui Kato
+
+Ph.D student at Tokyo Institute of Technology, Yokohama, Japan \n
+Advisor: [http://www.sc.dis.titech.ac.jp/ishii/index.html Hideaki Ishii]
+
+My CV can be found [cv/cv.pdf here].
+
+== Contact
+kato@sc.dis.titech.ac.jp
+
+== Education
+*Tokyo Institute of Technology* \n
+Yokohama, Japan \n
+M.Eng. in Computer Science, March 2021
+
+*Tokyo Institute of Technology* \n
+Yokohama, Japan \n
+B.Eng. in Control Systems Engineering, March 2019
+
+== Research
+- Understanding and control of complex dynamics
+- Safe and resilient cyber-physical systems
+
+== Papers
+=== 2024
+- R. Kato & H. Ishii \n
+    Cluster synchronization of Kuramoto oscillators and the method of averaging \n
+    /IEEE Transactions on Automatic Control/ (accepted)
+
+=== 2023
+- R. Kato & H. Ishii \n
+    [https://ieeexplore.ieee.org/abstract/document/10254519 Hausdorff dimension estimates for interconnected systems with variable metrics] \n
+    /IEEE Control Systems Letters/, vol. 7, pp. 3247--3252
+- R. Kato & H. Ishii \n
+    [https://www.sciencedirect.com/science/article/pii/S2405896323019560 Dimension analysis via differential Lyapunov and dissipation inequalities] \n
+    /Proceedings of the 22nd IFAC World Congress/, pp. 65--70
+
+=== 2022
+- R. Kato, A. Cetinkaya, & H. Ishii \n
+    [https://ieeexplore.ieee.org/document/9640465 Linearization-based quantized stabilization of nonlinear systems under DoS attacks] \n
+    /IEEE Transactions on Automatic Control/, vol. 67, no. 12, pp. 6826--6833
+
+=== 2021
+- R. Kato, A. Cetinkaya, & H. Ishii \n
+    [https://ieeexplore.ieee.org/document/9424951 Security analysis of linearization for nonlinear networked control systems under DoS] \n
+    /IEEE Transactions on Control of Network Systems/, vol. 8, no. 4, pp. 1692--1704
+- R. Kato & H. Ishii \n
+    [https://ieeexplore.ieee.org/document/9655116 Averaging and cluster synchronization of Kuramoto oscillators] \n
+    /Proceedings of the 19th European Control Conference/, pp. 1497--1502
+
+=== 2020
+- R. Kato, A. Cetinkaya, & H. Ishii \n
+  [https://www.sciencedirect.com/science/article/pii/S2405896320313689 DoS-aware quantized control of nonlinear systems via linearization] \n
+  /Proceedings of the 21st IFAC World Congress/, pp. 3054--3059
+
+=== 2019
+- R. Kato, A. Cetinkaya, & H. Ishii \n
+  [https://ieeexplore.ieee.org/document/8815105 Stabilization of nonlinear networked control systems under denial-of-service attacks: A linearization approach] \n
+  /Proceedings of the 37th American Control Conference/, pp. 1444--1449
+
+== Awards
+- SICE Control Division Young Author Award, 2022
+- SICE Young Author Award, 2020
+
+== Fellowship
+- Research Fellow of the Japan Society for the Promotion os Science (JSPS), 2021--2023

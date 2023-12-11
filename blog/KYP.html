@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Proof of the KYP lemma</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<div id="layout-content">
+<div id="toptitle">
+<h1>Proof of the KYP lemma</h1>
+</div>
+<p><i>This page will be updated continuously.</i>
+</p>
+<p>This post is aimed at summarizing a proof of the KYP (Kalman&ndash;Yakubovich&ndash;Popov) lemma.
+The KYP lemma is one of the most important results in control theory.
+It first appeared as a tool to solve the absolute stability problem.
+The solvability of Lur'e resolving equations was characterized by a frequency-domain inequality.
+Currently, the KYP lemma has become a more powerful tool for the analysis and synthesis of control systems.
+In particular, many frequency-domain properties can be verified through semidefinite programming.
+</p>
+<p>Let \(A \in \mathbb{R}^{n \times n}\), \(B \in \mathbb{R}^{n \times m}\), \(C \in \mathbb{R}^{p \times n}\), and \(D \in \mathbb{R}^{p \times m}\) be fixed.
+These can be considered as the coefficient matrices of the LTI system described by
+</p>
+<p style="text-align:center">
+\[
+  \begin{aligned}
+    \dot{x}(t) &amp;= Ax(t) + Bu(t), \\
+    y(t) &amp;= Cx(t) + Du(t),
+  \end{aligned}
+\]
+</p><p>where \(x(t)\), \(u(t)\), and \(y(t)\) are the state, input, and output, respectively.
+The associated transfer matrix is given by the matrix of proper rational functions
+</p>
+<p style="text-align:center">
+\[
+  \mathbf{G}(s) = C (sI - A)^{-1} B + D.
+\]
+</p><p>The KYP lemma states the equivalence between the frequency-domain property of the transfer matrix and an LMI involving its state-space realization.
+The statement is very clear, but the proof seems advanced.
+In this post, I want to summarize some ideas of the proof.
+An excellent proof based on linear algebra and convex analysis was given by Rantzer in <a href="https://www.sciencedirect.com/science/article/abs/pii/0167691195000631" target=&ldquo;blank&rdquo;>this paper</a>.
+For classical and modern perspectives, see <a href="https://link.springer.com/article/10.1134/S000511790611004X" target=&ldquo;blank&rdquo;>this paper</a> and <a href="https://www.sciencedirect.com/science/article/abs/pii/S0947358006704654" target=&ldquo;blank&rdquo;>this paper</a>.
+</p>
+<h3>Key lemmas from linear algebra</h3>
+<p>We recall some preliminary results from Rantzer's paper.
+</p>
+<p><b>Lemma 1.</b>
+Let \(F,G \in \mathbb{C}^{m \times n}\).
+Then, the following statements are true: <br />
+(1) \(FF^* = GG^*\) if and only if there exists a matrix \(U\) such that \(UU^* = I\) and \(F = GU\). <br />
+(2) \(FG^* + GF^* = 0\) if and only if there exists a matrix \(U\) such that \(UU^* = I\) and \(F (I + U) = G (I - U)\).
+</p>
+<p><i>Proof.</i>
+The item (2) can be proven by replacing \(F\) and \(G\) in the item (1) by \(G - F\) and \(F + G\), respectively.
+Thus, we prove only the item (1). <br />
+First, we assume that \(m \le n\).
+In this case, instead of \(F\) and \(G\), we consider the enlarged square matrices
+</p>
+<p style="text-align:center">
+\[
+  \bar{F} := 
+  \begin{bmatrix}
+    F \\ 0
+  \end{bmatrix}, \quad
+  \bar{G} := 
+  \begin{bmatrix}
+    G \\ 0
+  \end{bmatrix}.
+\]
+</p><p>The polar decompositions of \(\bar{F}\) and \(\bar{G}\) yield
+</p>
+<p style="text-align:center">
+\[
+  \begin{aligned}
+    \bar{F} &amp;= P_1 U_1, \quad P_1 \succeq 0, \quad U_1 \text{ unitary}, \\
+    \bar{G} &amp;= P_2 U_2, \quad P_2 \succeq 0, \quad U_2 \text{ unitary}.
+  \end{aligned}
+\]
+</p><p>The matrices \(P_1\) and \(P_2\) are uniquely determined by \(P_1 = (\bar{F} \bar{F}^*)^{1/2}\) and \(P_2 = (\bar{G} \bar{G}^*)^{1/2}\), respectively.
+Then, it is not difficult to see that
+</p>
+<p style="text-align:center">
+\[
+  FF^* = GG^* \iff \bar{F} \bar{F}^* = \bar{G} \bar{G}^* \iff P_1 = P_2 \iff \bar{F} = \bar{G} U \iff F = GU,
+\]
+</p><p>where \(U := U_2^* U_1\). <br />
+Then, we assume that \(m &gt; n\).
+In this case, there exists a unitary matrix \(U_0\) such that
+</p>
+<p style="text-align:center">
+\[
+  F = U_0
+  \begin{bmatrix}
+    F_0 \\ 0
+  \end{bmatrix}, \quad
+  G = U_0
+  \begin{bmatrix}
+    G_0 \\ 0
+  \end{bmatrix}.
+\]
+</p><p>To confirm this, we note that the SVD of \(F\) yields
+</p>
+<p style="text-align:center">
+\[
+  F = U_0
+  \begin{bmatrix}
+    \Delta_F \\ 0
+  \end{bmatrix}
+  V_0^*, \quad \Delta_F := \mathrm{diag}(\sigma_1(F),\ldots,\sigma_n(F)),
+\]
+</p><p>where \(U_0\) and \(V_0\) are unitary matrices.
+Thus, we set \(F_0 := \Delta_F V_0^*\).
+Correspondingly, we decompose \(G\) as
+</p>
+<p style="text-align:center">
+\[
+  G = U_0
+  \begin{bmatrix}
+    G_0 \\ \bar{G}_0
+  \end{bmatrix}.
+\]
+</p><p>Then,
+</p>
+<p style="text-align:center">
+\[
+  FF^* = GG^* \iff
+  \begin{bmatrix}
+    F_0 F_0^* &amp; 0 \\
+    0 &amp; 0
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    G_0 G_0^* &amp; G_0 \bar{G}_0^* \\
+    \bar{G}_0 G_0^* &amp; \bar{G}_0 \bar{G}_0^*
+  \end{bmatrix}.
+\]
+</p><p>This means that \(\bar{G}_0 = 0\) must hold.
+Because of the equality \(F_0 F_0^* = G_0 G_0^*\), the above condition is equivalent to the existence of a matrix \(U\) such that \(UU^* = I\) and \(F_0 = G_0 U\).
+Equivalently, we have \(F = GU\). (QED)
+</p>
+<p><b>Lemma 2.</b>
+Let \(M,N \in \mathbb{C}^{m \times n}\).
+If \(NWM^* + MWN^* = 0\) for some \(W \succeq 0\), then there exist \(w_1,\ldots,w_n \in \mathbb{C}^n\) such that
+</p>
+<p style="text-align:center">
+\[
+  W = \sum_{k=1}^n w_k w_k^*
+\]
+</p><p>and
+</p>
+<p style="text-align:center">
+\[
+  N w_k w_k^* M^* + M w_k w_k^* N^* = 0, \quad k \in \{1,\ldots,n\}.
+\]
+</p><h3>Elimination of \(\omega\)</h3>
+<p><b>Lemma 3.</b>
+Let \(\xi,\eta \in \mathbb{C}^n\).
+Then, \(\xi \eta^* + \eta \xi^* = 0\) if and only if \(\xi = j \omega \eta\) for some \(\omega \in \mathbb{R}\).
+</p>
+<p><i>Proof.</i>
+The proof follows from Lemma 1.
+</p>
+<h3>Nonstrict inequalities</h3>
+<p>In the following, let \(\Pi\) be a given real symmetric matrix.
+</p>
+<p><b>KYP Lemma:</b>
+Assume that \((A,B)\) is controllable.
+Then, the following three assertions are equivalent: <br />
+(1) The inequality
+</p>
+<p style="text-align:center">
+\[
+  \begin{bmatrix}
+    (j \omega I - A)^{-1} B \\ I
+  \end{bmatrix}^*
+  \Pi
+  \begin{bmatrix}
+    (j \omega I - A)^{-1} B \\ I
+  \end{bmatrix}
+  \preceq 0
+\]
+</p><p>holds for all \(\omega \in \mathbb{R}\) such that \(\det (j \omega I - A) \ne 0\). <br />
+(2) There exists a real symmetric matrix \(P\) such that
+</p>
+<p style="text-align:center">
+\[
+  \begin{bmatrix}
+    A^\prime P + PA &amp; PB \\
+    B^\prime P &amp; 0
+  \end{bmatrix}
+  + \Pi \preceq 0.
+\]
+</p><p>(3) There exist real matrices \(P\), \(K\), and \(L\) with \(P\) symmetric such that
+</p>
+<p style="text-align:center">
+\[
+  \begin{aligned}
+    A^\prime P + PA + K^\prime K + \Pi_{11} &amp;= 0, \\
+    B^\prime P + L^\prime K + \Pi_{12} &amp;= 0, \\
+    L^\prime L + \Pi_{22} &amp;= 0.
+  \end{aligned}
+\]
+</p><p><i>Proof.</i>
+The item (1) can be rewritten as follows:
+For all \(x \in \mathbb{C}^n\) and \(u \in \mathbb{C}^m\),
+</p>
+<p style="text-align:center">
+\[
+  [\exists \omega \in \mathbb{R} : j \omega x = Ax + B u] \implies
+  \begin{bmatrix}
+    x \\ u
+  \end{bmatrix}^*
+  \Pi
+  \begin{bmatrix}
+    x \\ u
+  \end{bmatrix}
+  \le 0.
+\]
+</p><p>Moreover, Lemma 3 states that
+</p>
+<p style="text-align:center">
+\[
+  [\exists \omega \in \mathbb{R} : j \omega A = Ax + Bu] \iff x (Ax + Bu)^* + (Ax + Bu) x^* = 0.
+\]
+</p><p>We define
+</p>
+<p style="text-align:center">
+\[
+  \Theta :=
+  \left\{
+    \left(
+      \begin{bmatrix}
+        x \\ u
+      \end{bmatrix}^*
+      \Pi
+      \begin{bmatrix}
+        x \\ u
+      \end{bmatrix},
+      x (Ax + Bu)^* + (Ax + Bu) x^*
+    \right) : x \in \mathbb{C}^n,\ u \in \mathbb{C}^m
+  \right\} \subset \mathbb{R} \times \mathbb{R}^{n \times n}
+\]
+</p><p>and
+</p>
+<p style="text-align:center">
+\[
+  \mathscr{P} := \{(a,0) : a &gt; 0\} \subset \mathbb{R} \times \mathbb{R}^{n \times n}.
+\]
+</p><p>Thus, the item (1) is equivalent to \(\Theta \cap \mathscr{P} = \emptyset\).
+</p>
+<p>Now, we consider the convex full of \(\Theta\), denoted \(\mathrm{Conv}(\Theta)\).
+It can be shown that the item (1) is equivalent to \(\mathrm{Conv}(\Theta) \cap \mathscr{P} = \emptyset\).
+This means that there is a hyperplane which separates \(\Theta\) from \(\mathscr{P}\).
+Let \((p,P) \in \mathbb{R} \times \mathbf{S}^n\) be a linear functional specifying such a hyperplane.
+It is supposed to be nonnegative on \(\mathscr{P}\) and nonpositive on \(\Theta\).
+Thus, \(p \ge 0\) and
+</p>
+<p style="text-align:center">
+\[
+  \mathop{\mathrm{tr}}
+  \begin{bmatrix}
+    p \\ P
+  \end{bmatrix}^\prime
+  \begin{bmatrix}
+      \begin{bmatrix}
+        x \\ u
+      \end{bmatrix}^*
+      \Pi
+      \begin{bmatrix}
+        x \\ u
+      \end{bmatrix}
+      \\
+    x (Ax + Bu)^* + (Ax + Bu) x^*
+  \end{bmatrix}
+  \le 0.
+\]
+</p><p>The last inequality is equivalent to
+</p>
+<p style="text-align:center">
+\[
+  \begin{bmatrix}
+    x \\ u
+  \end{bmatrix}^*
+  \left\{
+    p \Pi +
+    \begin{bmatrix}
+      A^\prime P + PA &amp; PB \\
+      B^\prime P &amp; 0
+    \end{bmatrix}
+  \right\}
+  \begin{bmatrix}
+    x \\ u
+  \end{bmatrix}
+  \le 0
+\]
+</p><p>for all \(x \in \mathbb{C}^n\) and \(u \in \mathbb{C}^m\).
+If \(p = 0\) and \(P \ne 0\), then \((A,B)\) may be transformed into
+</p>
+<p style="text-align:center">
+\[
+  A =
+  \begin{bmatrix}
+    A_{11} &amp; A_{12} \\
+    0 &amp; A_{22}
+  \end{bmatrix}, \quad
+  B =
+  \begin{bmatrix}
+    B_1 \\ 0
+  \end{bmatrix}.
+\]
+</p><p>This contradicts the controllability assumption.
+Thus, \(p \ne 0\).
+Without loss of generality, we can set \(p = 1\).
+This is actually the item (2).
+The equivalence between the items (2) and (3) is clear. (QED)
+</p>
+<h3>\(\mathcal{S}\)-procedure and Lagrangian duality</h3>
+<p>An interpretation based on Lagrangian duality was discussed in <a href="https://ieeexplore.ieee.org/abstract/document/1166522?casa_token=g6BofRvhSzQAAAAA:tUGjHnA1dS8IW4I-1XtKNZKNv_3udvBUIpEAujP9c5evgYD8HxQPCl2IlWfMeWOc5MTvwlwlh7o" target=&ldquo;blank&rdquo;>this paper</a>.
+</p>
+</div>
+</body>
+</html>
