@@ -21,14 +21,13 @@ MathJax.Hub.Config({
 <div id="toptitle">
 <h1>Proof of the KYP lemma</h1>
 </div>
-<p><i>This page will be updated continuously.</i>
+<p><i>This page is incomplete and will be updated continuously.</i>
 </p>
 <p>This post is aimed at summarizing a proof of the KYP (Kalman&ndash;Yakubovich&ndash;Popov) lemma.
 The KYP lemma is one of the most important results in control theory.
 It first appeared as a tool to solve the absolute stability problem.
 The solvability of Lur'e resolving equations was characterized by a frequency-domain inequality.
 Currently, the KYP lemma has become a more powerful tool for the analysis and synthesis of control systems.
-In particular, many frequency-domain properties can be verified through semidefinite programming.
 </p>
 <p>Let \(A \in \mathbb{R}^{n \times n}\), \(B \in \mathbb{R}^{n \times m}\), \(C \in \mathbb{R}^{p \times n}\), and \(D \in \mathbb{R}^{p \times m}\) be fixed.
 These can be considered as the coefficient matrices of the LTI system described by
@@ -232,7 +231,7 @@ For all \(x \in \mathbb{C}^n\) and \(u \in \mathbb{C}^m\),
 </p>
 <p style="text-align:center">
 \[
-  [\exists \omega \in \mathbb{R} : j \omega A = Ax + Bu] \iff x (Ax + Bu)^* + (Ax + Bu) x^* = 0.
+  [\exists \omega \in \mathbb{R} : j \omega x = Ax + Bu] \iff x (Ax + Bu)^* + (Ax + Bu) x^* = 0.
 \]
 </p><p>We define
 </p>
