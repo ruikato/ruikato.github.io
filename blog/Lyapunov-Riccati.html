@@ -63,20 +63,20 @@ There exists a nonzero Hermitian matrix \(P \in \mathcal{H}^n\) such that \(P \s
 </p>
 </div></div>
 <h3>Connection with Lyapunov stability</h3>
-<p>If \(A\) is Hurwitz, then the Lyapunov equation
+<p>If a matrix \(A \in \mathbb{R}^{n \times n}\) is Hurwitz, then the Lyapunov equation
 </p>
 <p style="text-align:center">
 \[
-  A^*P + PA + Q = 0, \quad Q \succ 0,
+  A^\mathsf{T}P + PA + Q = 0, \quad Q = Q^\mathsf{T} \succ 0,
 \]
 </p><p>is feasible from the strict version of the above theorems.
 The unique solution is given by
 </p>
 <p style="text-align:center">
 \[
-  P = \int_0^\infty \mathrm{e}^{tA^*} Q \mathrm{e}^{tA} \,\mathrm{d}t.
+  P = \int_0^\infty \mathrm{e}^{tA^\mathsf{T}} Q \mathrm{e}^{tA} \,\mathrm{d}t.
 \]
-</p><p>Let us define a quadratic form \(V \colon \mathbb{C}^n \to \mathbb{R}\) by
+</p><p>Let us define a quadratic form \(V \colon \mathbb{R}^n \to \mathbb{R}\) by
 </p>
 <p style="text-align:center">
 \[
