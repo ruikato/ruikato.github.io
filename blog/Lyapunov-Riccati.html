@@ -64,6 +64,28 @@ There exists a nonzero Hermitian matrix \(P \in \mathcal{H}^n\) such that \(P \s
 </p><p>if and only if \(\alpha(A) \le 0\).
 </p>
 </div></div>
+<h3>Connection with Lyapunov stability</h3>
+<p>If \(A\) is Hurwitz, then the Lyapunov equation
+</p>
+<p style="text-align:center">
+\[
+  A^*P + PA + Q = 0, \quad Q \succ 0,
+\]
+</p><p>is feasible from the strict version of the above theorems.
+The solution is given by
+</p>
+<p style="text-align:center">
+\[
+  P = \int_0^\infty \mathrm{e}^{tA^*} Q \mathrm{e}^{tA} \,\mathrm{d}t.
+\]
+</p><p>Let us define a quadratic form \(V \colon \mathbb{C}^n \to \mathbb{R}\) by
+</p>
+<p style="text-align:center">
+\[
+  V(x) = x^*Px.
+\]
+</p><p>This is a (strict) Lyapunov function for the linear ODE \(\dot{x} = Ax\).
+</p>
 <h3>Riccati inequalities vs. frequency conditions</h3>
 <p>Let \(A \in \mathbb{C}^{m \times n}\), \(B \in \mathbb{C}^{n \times m}\), and \(M \in \mathcal{H}^{n + m}\).
 Let \(M\) be partitioned as
@@ -115,7 +137,7 @@ This assumption is necessary for feasibility of the Riccati inequality.
 <div class="infoblock">
 <div class="blockcontent">
 <p><b>Theorem (nonstrict Riccati inequality).</b><br />
-Suppose that \(M_{22} \preceq 0\) and that all uncontrollable modes of \((A,B)\) are nondefective and lie on the imaginary axis.
+Suppose that \(M_{22} \preceq 0\) and that all uncontrollable modes of \((A,B)\) are nondefective and correspond to the purely eigenvalues of \(A\).
 There exists a Hermitian matrix \(P \in \mathcal{H}^n\) such that
 </p>
 <p style="text-align:center">
