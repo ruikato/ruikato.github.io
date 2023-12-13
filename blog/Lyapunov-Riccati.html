@@ -90,6 +90,42 @@ The unique solution is given by
 \]
 </p><p>This is a (strict) Lyapunov function for the linear ODE \(\dot{x}(t) = Ax(t)\).
 </p>
+<h3>Connection with stabilization by state feedback</h3>
+<p>Consider the control system described by
+</p>
+<p style="text-align:center">
+\[
+  \dot{x}(t) = Ax(t) + Bu(t).
+\]
+</p><p>Assume that \((A,B)\) is stabilizable.
+In this case, there exists a matrix \(K\) such that \(A - BK\) is Hurwitz if and only if there exist a symmetric matrix \(X \in \mathbb{R}^{n \times n}\) and a matrix \(U \in \mathbb{R}^{n \times m}\) such that \(X \succ 0\) and
+</p>
+<p style="text-align:center">
+\[
+  \begin{bmatrix}
+    A &amp; B
+  \end{bmatrix}
+  \begin{bmatrix}
+    X \\ U
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    X \\ U
+  \end{bmatrix}^\mathsf{T}
+  \begin{bmatrix}
+    A &amp; B
+  \end{bmatrix}^\mathsf{T}
+  \prec 0.
+\]
+</p><p>The stabilizing gain is determined by \(K = -UX^{-1}\).
+Moreover, the positive-definite matrix \(X\) satisfies
+</p>
+<p style="text-align:center">
+\[
+  X (A - BK)^\mathsf{T} + (A - BK) X \prec 0.
+\]
+</p><p>This is known as a <i>dual Lyapunov inequality</i>.
+</p>
 <h3>Riccati inequalities vs. frequency conditions</h3>
 <p>Let \(A \in \mathbb{C}^{m \times n}\), \(B \in \mathbb{C}^{n \times m}\), and \(M \in \mathcal{H}^{n + m}\).
 Let \(M\) be partitioned as
@@ -245,8 +281,16 @@ Moreover, \(V^+(x_0) &gt; - \infty\) if and only if there exists a symmetric mat
   \end{bmatrix}
   -
   \begin{bmatrix}
-    C^\mathsf{T}QC &amp; C^\mathsf{T}QD + C^\mathsf{T}S \\
-    D^\mathsf{T}QC + S^\mathsf{T}C &amp; D^\mathsf{T}QD + D^\mathsf{T}S + S^\mathsf{T}D + R
+    C &amp; D \\
+    0 &amp; I
+  \end{bmatrix}^\mathsf{T}
+  \begin{bmatrix}
+    Q &amp; S \\
+    S^\mathsf{T} &amp; R
+  \end{bmatrix}
+  \begin{bmatrix}
+    C &amp; D \\
+    0 &amp; I
   \end{bmatrix}
   \preceq 0.
 \]
