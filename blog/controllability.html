@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Controllability does not mean reprogrammability</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<div id="layout-content">
+<div id="toptitle">
+<h1>Controllability does not mean reprogrammability</h1>
+</div>
+<p>Controllability is a key concept in control theory.
+Yet, it does not mean reprogrammability of biological cells.
+This post discusses the gap between controllability of engineering systems and cellular reprogramming in biology.
+</p>
+<p><b>References</b>
+</p>
+<ul>
+<li><p>Y.-Y. Liu, J.-J. Slotine, &amp; A.-L. Barabási, &lsquo;&lsquo;<a href="https://www.nature.com/articles/nature10011" target=&ldquo;blank&rdquo;>Controllability of complex networks</a>,&rsquo;&rsquo; <i>Nature</i>, 473:167&ndash;173, 2011.
+</p>
+</li>
+<li><p>F.-J. Müller &amp; A. Schuppert, &lsquo;&lsquo;<a href="https://www.nature.com/articles/nature10543" target=&ldquo;blank&rdquo;>Few inputs can reprogram biological networks</a>,&rsquo;&rsquo; <i>Nature</i>, 478:E4, 2011.
+</p>
+</li>
+<li><p>B. Fiedler, A. Mochizuki, G. Kurosawa, &amp; D. Saito, &lsquo;&lsquo;<a href="https://link.springer.com/article/10.1007/s10884-013-9312-7" target=&ldquo;blank&rdquo;>Dynamics and control
+at feedback vertex sets. I: Informative and determining nodes in regulatory
+networks</a>,&rsquo;&rsquo; <i>J. Dyn. Differ. Equ.</i>, 25:563&ndash;604, 2013.
+</p>
+</li>
+<li><p>A. Mochizuki, B. Fiedler, G. Kurosawa, &amp; D. Saito, &lsquo;&lsquo;<a href="https://www.sciencedirect.com/science/article/pii/S0022519313002816" target=&ldquo;blank&rdquo;>Dynamics and control at feedback vertex sets. II: A faithful monitor to determine the diversity of molecular activities in regulatory networks</a>,&rsquo;&rsquo; <i>J. Theor. Biol.</i>, 335:130&ndash;146, 2013.
+</p>
+</li>
+<li><p>望月 敦史 著，<a href="https://www.kyoritsu-pub.co.jp/book/b10003326.html" target=&ldquo;blank&rdquo;>理論生物学概論</a>，共立出版，2021年．
+</p>
+</li>
+</ul>
+<p><b>Additional references</b>
+</p>
+<ul>
+<li><p>S. Gu, F. Pasqualetti, M. Cieslak, Q. K. Telesford, A. B. Yu, A. E. Kahn, J. D. Medaglia, J. M. Vettel, M. B. Miller, S. T. Grafton, &amp; D. S. Bassett, &lsquo;&lsquo;<a href="https://www.nature.com/articles/ncomms9414" target=&ldquo;blank&rdquo;>Controllability of structural brain networks</a>,&rsquo;&rsquo; <i>Nat. Commun.</i>, 6:8414, 2015.
+</p>
+</li>
+<li><p>J. G. T. Zañudo, G. Yang, &amp; R. Albert, &lsquo;&lsquo;<a href="https://www.pnas.org/doi/abs/10.1073/pnas.1617387114" target=&ldquo;blank&rdquo;>Structure-based control of complex networks with nonlinear dynamics</a>,&rsquo;&rsquo; <i>Proc. Natl. Acad. Sci. USA</i>, 114(28):7234&ndash;7239, 2017.
+</p>
+</li>
+</ul>
+<h3>What does controllability mean?</h3>
+<p>Consider the linear system described by
+</p>
+<p style="text-align:center">
+\[
+  \begin{align}
+    \dot{x}(t) = Ax(t) + Bu(t). \label{eq:system}
+  \end{align}
+\]
+</p><p>The definition of controllability introduced by Kalman is as follows.
+</p>
+<p><b>Definition:</b>
+The linear system \(\eqref{eq:system}\) is controllable if for every initial state \(x_0\) and every terminal state \(x_f\), there exists an input \(u\) defined on a finite interval \([0,T]\) such that \(x(0) = x_0\) and \(x(T) = x_f\).
+</p>
+<p>The above definition of controllability means that the state can be controlled to an arbitrary point no matter where the initial state is.
+This requirement is too strong for a real system because of diverse nonlinear effects.
+However, in practice, linear analysis may still be meaningful even when the objective is to understand complex nonlinear systems such as brain networks.
+</p>
+<h3>Controllability of complex networks</h3>
+<p>In the 2011 paper published in the Nature, controllability was deeply examined for many complex networks in the real world.
+That paper suggests that full control of about 80% of nodes in a gene regulatory network is required for controllability.
+Müller and Schuppert pointed out that this contradicts empirical results in the cellular reprogramming field.
+This gap was due to the conceptual difference of controllability in the two fields.
+In the context of biology, the target regions to be reached by control are only the local attractors that the system possess.
+Therefore, controlling of the state to an arbitrary point is not needed in biology.
+</p>
+<h3>Structure and dynamics in regulatory networks</h3>
+<p>Recently, Mochizuki's group developed a remarkable framework, called <i>linkage logic</i>, for controlling nonlinear dynamics in a biologically plausible sense.
+It is surprising that the reported framework is purely mathematical.
+</p>
+<p>Suppose that the states \(x = (x_1,\ldots,x_n)\) of the considered system are governed by nonlinear ODEs
+</p>
+<p style="text-align:center">
+\[
+  \begin{align}
+    \dot{x}_i(t) = f_i(x_1(t),\ldots,x_n(t)), \quad i \in \{1,\ldots,n\}. \label{eq:ODE}
+  \end{align}
+\]
+</p><p>The structure of the interactions between states can be represented by a directed graph \(\mathcal{G} = (\mathcal{V},\mathcal{E})\).
+Each node corresponds to one of the states, and an edge between two nodes exists if the corresponding states interact.
+A key concept is a set of <i>determining nodes</i>, which is defined as follows.
+</p>
+<p><b>Definition:</b>
+A set of <i>determining nodes</i> is a subset \(I \subset \mathcal{V}\) such that if for every two solutions \(x,x^\prime\) to the nonlinear ODE \(\eqref{eq:ODE}\),
+</p>
+<p style="text-align:center">
+\[
+  \lim_{t \to \infty} \|x_i(t) - x_i^\prime(t)\| = 0, \quad i \in I,
+\]
+</p><p>implies
+</p>
+<p style="text-align:center">
+\[
+  \lim_{t \to \infty} \|x_i(t) - x_i^\prime(t)\| = 0, \quad i \in \mathcal{V}.
+\]
+</p><p>Mochizuki's group discovered that a set of determining nodes can be identified as a feedback vertex set, which is a concept from graph theory.
+</p>
+<p>Another important object is a <i>global attractor</i>, which is the largest compact invariant set which attracts all trajectories.
+It is well known that if a dynamical system is dissipative in the sense of Levinson, then it has a unique global attractor.
+A mathematical explanation of Mochizuki's framework is as follows.
+</p>
+<p><b>Theorem:</b>
+If a subset \(I \subset \mathcal{V}\) is a feedback vertex set of \(\mathcal{G}\), then there exists an injection on the global attractor into the negative orbits associated with \(I\).
+</p>
+</div>
+</body>
+</html>
