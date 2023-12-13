@@ -90,7 +90,7 @@ The unique solution is given by
 \]
 </p><p>This is a (strict) Lyapunov function for the linear ODE \(\dot{x}(t) = Ax(t)\).
 </p>
-<h3>Connection with stabilization by state feedback</h3>
+<h3>Connection with state feedback stabilization</h3>
 <p>Consider the control system described by
 </p>
 <p style="text-align:center">
@@ -98,7 +98,7 @@ The unique solution is given by
   \dot{x}(t) = Ax(t) + Bu(t).
 \]
 </p><p>Assume that \((A,B)\) is stabilizable.
-In this case, there exists a matrix \(K\) such that \(A - BK\) is Hurwitz if and only if there exist a symmetric matrix \(X \in \mathbb{R}^{n \times n}\) and a matrix \(U \in \mathbb{R}^{n \times m}\) such that \(X \succ 0\) and
+In this case, there exists a matrix \(K \in \mathbb{R}^{n \times m}\) such that \(A - BK\) is Hurwitz if and only if there exist a symmetric matrix \(X \in \mathcal{S}^{n \times n}\) and a matrix \(U \in \mathbb{R}^{n \times m}\) such that \(X \succ 0\) and
 </p>
 <p style="text-align:center">
 \[
@@ -110,11 +110,11 @@ In this case, there exists a matrix \(K\) such that \(A - BK\) is Hurwitz if and
   \end{bmatrix}
   +
   \begin{bmatrix}
-    X \\ U
-  \end{bmatrix}^\mathsf{T}
+    X &amp; U^\mathsf{T}
+  \end{bmatrix}
   \begin{bmatrix}
-    A &amp; B
-  \end{bmatrix}^\mathsf{T}
+    A^\mathsf{T} \\ B^\mathsf{T}
+  \end{bmatrix}
   \prec 0.
 \]
 </p><p>The stabilizing gain is determined by \(K = -UX^{-1}\).
