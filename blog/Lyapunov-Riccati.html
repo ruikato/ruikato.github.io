@@ -85,7 +85,7 @@ The unique solution is given by
 \[
   V(x) = x^*Px.
 \]
-</p><p>This is a (strict) Lyapunov function for the linear ODE \(\dot{x} = Ax\).
+</p><p>This is a (strict) Lyapunov function for the linear ODE \(\dot{x}(t) = Ax(t)\).
 </p>
 <h3>Riccati inequalities vs. frequency conditions</h3>
 <p>Let \(A \in \mathbb{C}^{m \times n}\), \(B \in \mathbb{C}^{n \times m}\), and \(M \in \mathcal{H}^{n + m}\).
@@ -173,6 +173,42 @@ There exists a Hermitian matrix \(P \in \mathcal{H}^n\) such that
 </p><p>for all \(\omega \in \mathbb{R}\) and all \((x,u) \in \mathbb{C}^{n + m}\).
 </p>
 </div></div>
+<h3>Connection with optimal control</h3>
+<p>Consider the LQR problem:
+</p>
+<p style="text-align:center">
+\[
+  \begin{aligned}
+    \mathtt{minimize}&amp; \quad \int_0^\infty [x(t)^\mathsf{T}Qx(t) + u(t)^\mathsf{T}Ru(t)] \,\mathrm{d}t \\
+    \mathtt{subject\ to}&amp; \quad \dot{x}(t) = Ax(t) + Bu(t), \quad x(0) = x_0, \quad \lim_{t \to \infty} x(t) = 0
+  \end{aligned}
+\]
+</p><p>Note that we do not impose any assumptions on \(Q\) and \(R\) except that they are symmetric.
+We define the optimal cost
+</p>
+<p style="text-align:center">
+\[
+  V^+(x_0) := \inf_{u \in \mathcal{L}^2_\mathrm{loc}[0,\infty)} \left\{ \int_0^\infty [x(t)^\mathsf{T}Qx(t) + u(t)^\mathsf{T}Ru(t)] \,\mathrm{d}t : x(0) = x_0,\ \lim_{t \to \infty} x(t) = 0 \right\}.
+\]
+</p><p>Now, we assume that \((A,B)\) is controllable.
+This assumption implies that \(V^+(x_0) &lt; \infty\) because we can take a \(u\) such that \((x,u) \in \mathcal{L}^2[0,\infty)\) for every \(x_0\).
+Moreover, \(V^+(x_0) &gt; - \infty\) if and only if there exists a symmetric matrix \(P \in \mathcal{S}^n\) such that
+</p>
+<p style="text-align:center">
+\[
+  \begin{bmatrix}
+    A^*P + PA &amp; PB \\
+    B^*P &amp; 0
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    Q &amp; 0 \\
+    0 &amp; R
+  \end{bmatrix}
+  \succeq 0.
+\]
+</p><p>This is known as a <i>reversed Riccati inequality</i>.
+</p>
 </div>
 </body>
 </html>
