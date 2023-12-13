@@ -132,7 +132,14 @@ We need not consider \(\omega = \infty\), which means that \((\mathrm{j} \omega 
 If \(x = 0\), then the condition is automatically satisfied because we have assumed that \(M_{22} \prec 0\).
 This assumption is necessary for feasibility of the Riccati inequality.
 </p>
-<div class="infoblock">
+<p><b>Remark:</b>
+Using the Schur complement, we can transform the Riccati inequality into
+</p>
+<p style="text-align:center">
+\[
+  A^*P + PA + M_{11} - (PB + M_{12}) M_{22}^{-1} (PB + M_{12})^* \prec 0, \quad M_{22} \prec 0.
+\]
+</p><div class="infoblock">
 <div class="blockcontent">
 <p><b>Theorem (nonstrict Riccati inequality).</b><br />
 Suppose that \(M_{22} \preceq 0\) and that all uncontrollable modes of \((A,B)\) are nondefective and lie on the imaginary axis.
