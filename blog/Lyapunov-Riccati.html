@@ -177,7 +177,7 @@ There exists a Hermitian matrix \(P \in \mathcal{H}^n\) such that
 </p>
 </div></div>
 <h3>Connection with optimal control</h3>
-<p>Consider the LQR problem:
+<p>Consider the infinite-horizon LQR problem:
 </p>
 <p style="text-align:center">
 \[
@@ -211,6 +211,55 @@ Moreover, \(V^+(x_0) &gt; - \infty\) if and only if there exists a symmetric mat
   \succeq 0.
 \]
 </p><p>This is known as a <i>reversed Riccati inequality</i>.
+</p>
+<h3>Connection with dissipative systems</h3>
+<p>Consider the LTI system described by
+</p>
+<p style="text-align:center">
+\[
+  \begin{aligned}
+    \dot{x}(t) &amp;= Ax(t) + Bu(t), \\
+    y(t) &amp;= Cx(t) + Du(t).
+  \end{aligned}
+\]
+</p><p>Let the supply rate be given by
+</p>
+<p style="text-align:center">
+\[
+  w(u,y) =
+  \begin{bmatrix}
+    y \\ u
+  \end{bmatrix}^\mathsf{T}
+  \begin{bmatrix}
+    Q &amp; S \\
+    S^\mathsf{T} &amp; R
+  \end{bmatrix}
+  \begin{bmatrix}
+    y \\ u
+  \end{bmatrix}.
+\]
+</p><p>Suppose that there exists a symmetric matrix \(P \in \mathcal{S}^n\) such that
+</p>
+<p style="text-align:center">
+\[
+  \begin{bmatrix}
+    A^\mathsf{T}P + PA &amp; PB \\
+    B^\mathsf{T}P &amp; 0
+  \end{bmatrix}
+  -
+  \begin{bmatrix}
+    C^\mathsf{T}QC &amp; C^\mathsf{T}QD + C^\mathsf{T}S \\
+    D^\mathsf{T}QC + S^\mathsf{T}C &amp; D^\mathsf{T}QD + D^\mathsf{T}S + S^\mathsf{T}D + R
+  \end{bmatrix}
+  \preceq 0.
+\]
+</p><p>Then, the LTI system has the storage function \(W(x) := x^\mathsf{T}Px\) for which the dissipation inequality
+</p>
+<p style="text-align:center">
+\[
+  W(x(t_1)) \le W(x(t_0)) + \int_{t_0}^{t_1} w(u(\tau),y(\tau)) \,\mathrm{d}\tau
+\]
+</p><p>is satisfied for all \(t_0,t_1 \ge 0\) with \(t_0 \le t_1\) and all \((x,u,y) \in \mathfrak{B}\).
 </p>
 </div>
 </body>
