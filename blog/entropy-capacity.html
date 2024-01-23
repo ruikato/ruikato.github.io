@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Entropy and capacity in metric spaces</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<div id="layout-content">
+<div id="toptitle">
+<h1>Entropy and capacity in metric spaces</h1>
+</div>
+<p>This post describes the notions of \(\varepsilon\)-entropy and \(\varepsilon\)-capacity.
+</p>
+<h3>\(\varepsilon\)-covering and \(\varepsilon\)-packing</h3>
+<p>Let \((X,d)\) be a metric space.
+The (open) \(\varepsilon\)-ball \(\mathcal{B}_\varepsilon(x)\) centered at \(x\) is defined by
+</p>
+<p style="text-align:center">
+\[
+  \mathcal{B}_\varepsilon(x) := \{y \in X : d(x,y) &lt; \varepsilon\}.
+\]
+</p><p>Let \(S \subset X\), and let \(\varepsilon &gt; 0\).
+We now introduce the notions of \(\varepsilon\)-covering and \(\varepsilon\)-packing.
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p><b>Definition (\(\varepsilon\)-covering).</b><br />
+A set \(A \subset S\) is said to be an \(\varepsilon\)-covering of \(S\) if
+</p>
+<p style="text-align:center">
+\[
+  S \subset \bigcup_{x \in A} \mathcal{B}_\varepsilon(x) \subset X.
+\]
+</p></div></div>
+<div class="infoblock">
+<div class="blockcontent">
+<p><b>Definition (\(\varepsilon\)-packing).</b><br />
+A set \(A \subset S\) is said to be an \(\varepsilon\)-packing of \(S\) if
+</p>
+<p style="text-align:center">
+\[
+  \bigcup_{x \in A} \mathcal{B}_\varepsilon(x) \subset S \quad \text{and} \quad \bigcap_{x \in A} \mathcal{B}_\varepsilon(x) = \emptyset.
+\]
+</p></div></div>
+<p>Roughly speaking, an \(\varepsilon\)-covering of \(S\) is a collection of \(\varepsilon\)-balls which covers \(S\), and an \(\varepsilon\)-packing of \(S\) is a collection of \(\varepsilon\)-balls which are disjoint from each other.
+Note that the definitions are slightly different depending on the context.
+</p>
+<h3>\(\varepsilon\)-entropy and \(\varepsilon\)-capacity</h3>
+<p>The minimal cardinality of \(\varepsilon\)-coverings of \(S\) is denoted by \(N(S,\varepsilon)\).
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p><b>Definition (\(\varepsilon\)-entropy).</b><br />
+The \(\varepsilon\)-entropy of \(S\) is the number \(\log_2 N(S,\varepsilon)\).
+</p>
+</div></div>
+<p>The maximal cardinality of \(\varepsilon\)-packings of \(S\) is denoted by \(M(S,\varepsilon)\).
+</p>
+<div class="infoblock">
+<div class="blockcontent">
+<p><b>Definition (\(\varepsilon\)-capacity).</b><br />
+The \(\varepsilon\)-capacity of \(S\) is the number \(\log_2 M(S,\varepsilon)\).
+</p>
+</div></div>
+</div>
+</body>
+</html>
