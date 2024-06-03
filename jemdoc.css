@@ -33,7 +33,7 @@ body {
 	padding-left: 8px;
 	padding-right: 8px;
 	font-size: 1.0em;
-	width: auto;
+	width: 250px;
 	white-space: nowrap;
     text-align: left;
     vertical-align: top;
@@ -52,6 +52,7 @@ body {
     background: white;
     text-align: left;
     vertical-align: top;
+		width: 1000px;
 }
 
 #layout-menu a {
@@ -228,7 +229,6 @@ ol {
 }
 
 li p, dd p {
-	margin-bottom: 0.3em;
 }
 
 
@@ -349,15 +349,22 @@ img.eqwl {
 }
 
 table {
-    border: 2px solid black;
     border-collapse: collapse;
+}
+
+table tr:nth-child(odd){
+  background-color:#f0f0f0;
+}
+ 
+table tr:nth-child(even){
+  background-color:white;
 }
 
 td {
     padding: 2px;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    text-align: center;
+    text-align: left;
     border: 1px solid gray;
 }
 
